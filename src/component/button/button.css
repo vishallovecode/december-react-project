@@ -1,0 +1,9 @@
+.button {
+  display: flex;
+  border: 1px solid red;
+  border-radius: 3px;
+  padding: 3px 10px;
+  background: white;
+  color: red;
+  font-weight: 500;
+}
