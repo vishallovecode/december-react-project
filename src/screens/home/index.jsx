@@ -29,7 +29,9 @@ const Home = () => {
 
   const handleChange = (event) => {
     setSearch(event.target.value);
-    const url = SEARCH_PRODUCT_LIST(event.target.value);
+    const url = event.target.value
+      ? SEARCH_PRODUCT_LIST(event.target.value)
+      : "";
     getProducts(url);
   };
 
