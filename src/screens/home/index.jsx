@@ -7,6 +7,7 @@ import {
 
 import "./home.css";
 import Input from "../../component/input";
+import { debounce } from "../../utils";
 
 const Home = () => {
   const [productList, setProductList] = useState({});
@@ -28,6 +29,7 @@ const Home = () => {
   }, []);
 
   const handleChange = (event) => {
+    console.log(event.target.value);
     setSearch(event.target.value);
     const url = event.target.value
       ? SEARCH_PRODUCT_LIST(event.target.value)
@@ -35,9 +37,11 @@ const Home = () => {
     getProducts(url);
   };
 
+  const debounceChange = debounce(handleChange, 0);
+
   return (
     <div>
-      <Input value={search} placeHolder="search" onChange={handleChange} x />
+      <Input value={search} placeHolder="search" onChange={debounceChange} x />
       <div className="home">
         {productList?.products && Array.isArray(productList?.products)
           ? productList?.products.map((product) => {
