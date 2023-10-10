@@ -4,4 +4,12 @@
   gap: 10px;
   position: relative;
   left: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty {
+  position: relative;
+  top: 120px;
+  right: 100px;
 }

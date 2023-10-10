@@ -8,12 +8,16 @@ import {
 import "./home.css";
 import Input from "../../component/input";
 import { debounce } from "../../utils";
+import Loader from "../../component/loader";
+import EmptyScreen from "../../component/empty-screen";
 
 const Home = () => {
   const [productList, setProductList] = useState({});
   const [search, setSearch] = useState("");
+  const [loader, setLoader] = useState("");
 
   const getProducts = async (url) => {
+    setLoader(true);
     try {
       const res = await fetch(url ? url : GET_PRODUCT_LIST);
       let productResponse = await res.json();
@@ -21,6 +25,8 @@ const Home = () => {
       setProductList(productResponse);
     } catch (error) {
       console.error("error::", error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -37,17 +43,31 @@ const Home = () => {
     getProducts(url);
   };
 
-  const debounceChange = debounce(handleChange, 0);
+  const debounceChange = debounce(handleChange, 500);
 
   return (
     <div>
-      <Input value={search} placeHolder="search" onChange={debounceChange} x />
+      <Input placeHolder="search" onChange={debounceChange} />
+
       <div className="home">
-        {productList?.products && Array.isArray(productList?.products)
-          ? productList?.products.map((product) => {
-              return <ProductCard product={product} />;
-            })
-          : null}
+        {!loader &&
+        productList?.products &&
+        productList?.products.length >= 1 &&
+        Array.isArray(productList?.products) ? (
+          productList?.products.map((product) => {
+            return <ProductCard product={product} />;
+          })
+        ) : loader ? (
+          <Loader />
+        ) : (
+          <EmptyScreen
+            className="empty"
+            title={"No Products Found"}
+            description={
+              "Your Search did not match any Products, Please Try again"
+            }
+          />
+        )}
       </div>
     </div>
   );
