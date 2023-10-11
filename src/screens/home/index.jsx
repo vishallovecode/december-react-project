@@ -37,19 +37,31 @@ const Home = () => {
   };
 
   // calling product by category using useEffect
+  // update state
+
+  useEffect(() => {
+    if (selectedCategory) {
+      getProductsByCategory(selectedCategory);
+    }
+  }, [selectedCategory]);
 
   // directly calling on the value change
 
   const dropdownChange = (event) => {
     console.log(event.target.value, "hey checker");
+    if (!event.target.value) {
+      getProducts("");
+    }
     setSelectedCategory(event.target.value);
-    getProductsByCategory(event.target.value);
+    // getProductsByCategory(event.target.value);
   };
 
+  // function declration
   const getProducts = async (url) => {
     setLoader(true);
     try {
-      const res = await fetch(url ? url : GET_PRODUCT_LIST);
+      const URL = url ? url : GET_PRODUCT_LIST;
+      const res = await fetch(URL);
       let productResponse = await res.json();
 
       setProductList(productResponse);
@@ -61,7 +73,7 @@ const Home = () => {
   };
 
   const callback = () => {
-    getProducts();
+    getProducts(); // THIS IS CALLED ONCE AND CALLED AFTER THE MOUNTING
     getCategory();
   };
 
@@ -80,17 +92,15 @@ const Home = () => {
   };
 
   const debounceChange = debounce(handleChange, 500);
-
   const getCategory = async () => {
     const res = await fetch(GET_CATEGORY_LIST);
-    const categoryList = await res.json();
+    const categoryList = await res.json(); // this is array of string
     const updatedCategoryList = categoryList?.map((category) => {
       return {
-        id: category,
-        label: category,
+        categoryName: category,
       };
     });
-    console.log(updatedCategoryList, "updatedCategoryList");
+    console.log(updatedCategoryList, "updatedCategoryList", categoryList);
     setCategoryList(updatedCategoryList);
   };
 
@@ -119,8 +129,8 @@ const Home = () => {
           handleChange={dropdownChange}
           options={categories} // array of object  [{}, {} ,{}]
           placeHolder="Select Category"
-          labelKey={"label"}
-          idKey={"id"}
+          labelKey={"categoryName"}
+          idKey={"categoryName"}
         />
       </div>
 

@@ -3,10 +3,20 @@ const DropDown = (props) => {
   // destructring from props object
   const { options, placeHolder, labelKey, idKey, value, handleChange } = props;
 
+  console.log(options, labelKey, idKey, "props");
+
   return (
     <select value={value} className="select-cont" onChange={handleChange}>
-      <option>{placeHolder}</option>
+      <option value="">{placeHolder}</option>
+
       {options?.map((opt) => {
+        console.log(
+          opt,
+          "labelKey=>",
+          labelKey,
+          "opt[labelKey]=>",
+          opt[labelKey]
+        );
         return <option value={opt[idKey]}>{opt[labelKey]}</option>;
       })}
     </select>
