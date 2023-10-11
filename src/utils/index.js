@@ -1,6 +1,7 @@
 export const debounce = (fnc, delay) => {
   let timer = null;
   return (...args) => {
+    // args  => []
     clearTimeout(timer);
     timer = setTimeout(() => {
       fnc(...args);
