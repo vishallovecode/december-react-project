@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  height: 60px;
+  background: #3c006b;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.button-header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: orange;
+  cursor: pointer;
+}
+
+.image1 {
+  height: 30px;
+}
