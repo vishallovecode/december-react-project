@@ -3,6 +3,8 @@ import Tag from "../tag";
 import "./card.css";
 const ProductCard = (props) => {
   const { thumbnail, title, price, discountPercentage } = props.product;
+  const { increment, decrement, quantity } = props;
+
   return (
     <div className="product-card-cont">
       {discountPercentage && <Tag value={`${discountPercentage}%`} />}
@@ -12,7 +14,12 @@ const ProductCard = (props) => {
       <span className="title">{title}</span>
       <div className="footer">
         <span>{price}</span>
-        <Button>Add</Button>
+        <Button
+          increment={increment}
+          decrement={decrement}
+          buttonText="Add"
+          quantity={quantity}
+        />
       </div>
     </div>
   );

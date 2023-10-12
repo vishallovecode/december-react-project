@@ -17,6 +17,7 @@ import DropDown from "../../component/dropdown";
 const Home = () => {
   const [productList, setProductList] = useState({});
   const [search, setSearch] = useState("");
+  const [count, setCount] = useState(0);
   const [loader, setLoader] = useState("");
 
   const [categories, setCategoryList] = useState([]);
@@ -38,6 +39,14 @@ const Home = () => {
 
   // calling product by category using useEffect
   // update state
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    if (count >= 1) setCount(count - 1);
+  };
 
   useEffect(() => {
     if (selectedCategory) {
@@ -119,7 +128,7 @@ const Home = () => {
           gap: "10px",
           alignItems: "center",
           left: "10%",
-          width: "100%",
+          width: "80%",
           position: "relative",
         }}
       >
@@ -140,7 +149,14 @@ const Home = () => {
         productList?.products.length >= 1 &&
         Array.isArray(productList?.products) ? (
           productList?.products.map((product) => {
-            return <ProductCard product={product} />;
+            return (
+              <ProductCard
+                product={product}
+                increment={increment}
+                decrement={decrement}
+                quantity={count}
+              />
+            );
           })
         ) : loader ? (
           <Loader />
