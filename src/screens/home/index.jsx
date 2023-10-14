@@ -40,11 +40,30 @@ const Home = () => {
   // calling product by category using useEffect
   // update state
 
-  const increment = () => {
-    setCount(count + 1);
+  // increment function is getting id of the card which was clicked
+  // We are using map functions to  iterate  through every products inside the productList object
+  // map function return  a array , with value which is return by the callback function of map functions
+  // while traversing if we find any product equal to the id we will increment the count of that product by one
+
+  const increment = (id) => {
+    const products = productList.products?.map((product) => {
+      if (product.id === id) {
+        // return {
+        //   ...product,
+        //   quantity: product.quantity ? product.quantity + 1 : 1,
+        // };
+        product.quantity = product.quantity ? product.quantity + 1 : 1;
+        return product;
+      } else {
+        return product;
+      }
+    });
+    const updatedProductList = { ...productList };
+    updatedProductList.products = products;
+    setProductList(updatedProductList);
   };
 
-  const decrement = () => {
+  const decrement = (id) => {
     if (count >= 1) setCount(count - 1);
   };
 

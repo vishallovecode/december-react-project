@@ -2,8 +2,9 @@ import Button from "../button";
 import Tag from "../tag";
 import "./card.css";
 const ProductCard = (props) => {
-  const { thumbnail, title, price, discountPercentage } = props.product;
-  const { increment, decrement, quantity } = props;
+  const { thumbnail, title, price, discountPercentage, id, quantity } =
+    props.product;
+  const { increment, decrement } = props;
 
   return (
     <div className="product-card-cont">
@@ -13,10 +14,10 @@ const ProductCard = (props) => {
       </div>
       <span className="title">{title}</span>
       <div className="footer">
-        <span>{price}</span>
+        <span>$ {price}</span>
         <Button
-          increment={increment}
-          decrement={decrement}
+          increment={() => increment(id)}
+          decrement={() => decrement(id)}
           buttonText="Add"
           quantity={quantity}
         />
