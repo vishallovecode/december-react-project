@@ -4,7 +4,7 @@ import "./card.css";
 const ProductCard = (props) => {
   const { thumbnail, title, price, discountPercentage, id, quantity } =
     props.product;
-  const { increment, decrement } = props;
+  const { increment, decrement, product } = props;
 
   return (
     <div className="product-card-cont">
@@ -17,7 +17,7 @@ const ProductCard = (props) => {
         <span>$ {price}</span>
         <Button
           increment={() => increment(id)}
-          decrement={() => decrement(id)}
+          decrement={() => decrement(product)}
           buttonText="Add"
           quantity={quantity}
         />

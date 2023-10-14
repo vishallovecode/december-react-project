@@ -13,12 +13,15 @@ import { debounce } from "../../utils";
 import Loader from "../../component/loader";
 import EmptyScreen from "../../component/empty-screen";
 import DropDown from "../../component/dropdown";
+import Header from "../../component/header";
 
 const Home = () => {
   const [productList, setProductList] = useState({});
   const [search, setSearch] = useState("");
   const [count, setCount] = useState(0);
   const [loader, setLoader] = useState("");
+
+  const [cartCount, setCartCount] = useState(0);
 
   const [categories, setCategoryList] = useState([]);
 
@@ -46,6 +49,10 @@ const Home = () => {
   // while traversing if we find any product equal to the id we will increment the count of that product by one
 
   const increment = (id) => {
+    const updatedProductList = { ...productList }; // this deep copy of the parent label object
+    setCartCount(cartCount + 1);
+
+    localStorage.setItem("cartCount", cartCount + 1);
     const products = productList.products?.map((product) => {
       if (product.id === id) {
         // return {
@@ -58,13 +65,30 @@ const Home = () => {
         return product;
       }
     });
-    const updatedProductList = { ...productList };
     updatedProductList.products = products;
     setProductList(updatedProductList);
   };
 
-  const decrement = (id) => {
-    if (count >= 1) setCount(count - 1);
+  const decrement = (productObj) => {
+    if (productObj.quantity >= 1) {
+      setCartCount(cartCount - 1);
+      localStorage.setItem("cartCount", cartCount - 1);
+      const updatedProductList = { ...productList }; // this deep copy of the parent label object
+      const products = productList.products?.map((product) => {
+        if (product.id === productObj.id) {
+          return {
+            ...product,
+            quantity: product.quantity - 1,
+          };
+          // product.quantity = product.quantity - 1;
+          // return product;
+        } else {
+          return product;
+        }
+      });
+      updatedProductList.products = products;
+      setProductList(updatedProductList);
+    }
   };
 
   useEffect(() => {
@@ -133,63 +157,66 @@ const Home = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <>
+      <Header cartCount={cartCount} />
       <div
         style={{
           display: "flex",
-          gap: "10px",
+          flexDirection: "column",
+          justifyContent: "center",
           alignItems: "center",
-          left: "10%",
-          width: "80%",
-          position: "relative",
         }}
       >
-        <Input placeHolder="search" onChange={debounceChange} />
-        <DropDown
-          value={selectedCategory}
-          handleChange={dropdownChange}
-          options={categories} // array of object  [{}, {} ,{}]
-          placeHolder="Select Category"
-          labelKey={"categoryName"}
-          idKey={"categoryName"}
-        />
-      </div>
-
-      <div className="home">
-        {!loader &&
-        productList?.products &&
-        productList?.products.length >= 1 &&
-        Array.isArray(productList?.products) ? (
-          productList?.products.map((product) => {
-            return (
-              <ProductCard
-                product={product}
-                increment={increment}
-                decrement={decrement}
-                quantity={count}
-              />
-            );
-          })
-        ) : loader ? (
-          <Loader />
-        ) : (
-          <EmptyScreen
-            className="empty"
-            title={"No Products Found"}
-            description={
-              "Your Search did not match any Products, Please Try again"
-            }
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            alignItems: "center",
+            left: "10%",
+            width: "80%",
+            position: "relative",
+          }}
+        >
+          <Input placeHolder="search" onChange={debounceChange} />
+          <DropDown
+            value={selectedCategory}
+            handleChange={dropdownChange}
+            options={categories} // array of object  [{}, {} ,{}]
+            placeHolder="Select Category"
+            labelKey={"categoryName"}
+            idKey={"categoryName"}
           />
-        )}
+        </div>
+
+        <div className="home">
+          {!loader &&
+          productList?.products &&
+          productList?.products.length >= 1 &&
+          Array.isArray(productList?.products) ? (
+            productList?.products.map((product) => {
+              return (
+                <ProductCard
+                  product={product}
+                  increment={increment}
+                  decrement={decrement}
+                  quantity={count}
+                />
+              );
+            })
+          ) : loader ? (
+            <Loader />
+          ) : (
+            <EmptyScreen
+              className="empty"
+              title={"No Products Found"}
+              description={
+                "Your Search did not match any Products, Please Try again"
+              }
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -216,4 +243,8 @@ export default Home;
 //   "automotive",
 //   "motorcycle",
 //   "lighting"
-// ]
+// // ]
+//  const a ={
+//   name: 'vishal'
+//  }
+//  a.name ='sharma'

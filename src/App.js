@@ -6,7 +6,6 @@ import Home from "./screens/home";
 function App() {
   return (
     <div className="App">
-      <Header />
       <Home />
     </div>
   );
