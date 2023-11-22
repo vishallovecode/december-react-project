@@ -2,15 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../button";
 import Tag from "../tag";
 import "./card.css";
+import { useState } from "react";
 const ProductCard = (props) => {
-
-  const navigate = useNavigate();
+   const navigate = useNavigate();
   const { thumbnail, title, price, discountPercentage, id, quantity } =
     props.product;
   const { increment, decrement, product } = props;
 
   const cardClick = (event)=>{
-    navigate('/details')
+    navigate(`/details/${product.id}`)
   }
 
   return (
@@ -43,7 +43,7 @@ export default ProductCard;
 // params
 // location 
 // history
-// link
+// link(done)
 // navLink
 // useLocation
 // outlet
