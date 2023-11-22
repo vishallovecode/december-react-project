@@ -48,7 +48,8 @@ const Home = () => {
   // map function return  a array , with value which is return by the callback function of map functions
   // while traversing if we find any product equal to the id we will increment the count of that product by one
 
-  const increment = (id) => {
+  const increment = (event,id) => {
+    event.stopPropagation();
     const updatedProductList = { ...productList }; // this deep copy of the parent label object
     setCartCount(cartCount + 1);
 
@@ -69,7 +70,8 @@ const Home = () => {
     setProductList(updatedProductList);
   };
 
-  const decrement = (productObj) => {
+  const decrement = (event,productObj) => {
+    event.stopPropagation()
     if (productObj.quantity >= 1) {
       setCartCount(cartCount - 1);
       localStorage.setItem("cartCount", cartCount - 1);
