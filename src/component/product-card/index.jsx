@@ -36,11 +36,11 @@ export default ProductCard;
 
 
 
-// dynamic routes
+// dynamic routes(done)
 // if any routes does not we want to show differenet ui
 // Switch
 // nested routes
-// params
+// useParams(done)
 // location 
 // history
 // link(done)
@@ -49,3 +49,13 @@ export default ProductCard;
 // outlet
 // navigate(done)
 // redirect
+// useMemo
+// useCallback 
+// useRef
+// forwardRef
+// context api (1 week)
+// useReducer
+// custom hooks
+// React authentication 
+// redirection 
+// Private route
