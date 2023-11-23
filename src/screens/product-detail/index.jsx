@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./style.css";
 import { GET_PRODUCT_LIST } from "../../constant/restApiEndPoint";
 import { useEffect, useState } from "react";
 const ProductDetails = (props) => {
   const [productDetails, setProductDetails] = useState({});
   const { productId } = useParams();
+  const location =  useLocation();
+  console.log('location', location)
 
   useEffect(() => {
     fetchData();

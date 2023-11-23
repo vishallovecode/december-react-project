@@ -14,9 +14,12 @@ import Loader from "../../component/loader";
 import EmptyScreen from "../../component/empty-screen";
 import DropDown from "../../component/dropdown";
 import Header from "../../component/header";
+import { useLocation, useParams } from "react-router-dom";
 
 const Home = () => {
   const [productList, setProductList] = useState({});
+ 
+  
   const [search, setSearch] = useState("");
   const [count, setCount] = useState(0);
   const [loader, setLoader] = useState("");
@@ -26,6 +29,11 @@ const Home = () => {
   const [categories, setCategoryList] = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
+
+
+  const location =  useLocation();
+  const params = useParams();
+  console.log('location', location ,params )
 
   const getProductsByCategory = async (categoryName) => {
     setLoader(true);
@@ -39,6 +47,20 @@ const Home = () => {
       setLoader(false);
     }
   };
+
+
+  useEffect(()=>{
+      console.log('cool',new URLSearchParams(location.search).get('q'))
+     const data = new URLSearchParams(location.search).get('q')
+      setSearch(data);
+      const url = data
+        ? SEARCH_PRODUCT_LIST(data)
+        : "";
+  
+      // https://dummyjson.com/products/search?q=visha
+      // ''
+      getProducts(url);
+  } , [location])
 
   // calling product by category using useEffect
   // update state
@@ -179,7 +201,7 @@ const Home = () => {
             position: "relative",
           }}
         >
-          <Input placeHolder="search" onChange={debounceChange} />
+          <Input  value = {search}placeHolder="search" onChange={debounceChange} />
           <DropDown
             value={selectedCategory}
             handleChange={dropdownChange}

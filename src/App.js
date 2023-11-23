@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import {Switch } from "react-router";
 import "./App.css";
 import Header from "./component/header";
 import ProductCard from "./component/product-card";
@@ -10,8 +11,9 @@ function App() {
   return (
     <div className="App">
        <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path=  'details/:productId' element = {<ProductDetails/>}/>
+          <Route path=  'details/new' element = {<div>Hey new</div>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
     </div>

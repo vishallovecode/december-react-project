@@ -37,7 +37,7 @@ export default ProductCard;
 
 
 // dynamic routes(done)
-// if any routes does not we want to show differenet ui
+// if any routes does not we want to show differenet ui(done)
 // Switch
 // nested routes
 // useParams(done)
