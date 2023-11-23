@@ -1,0 +1,13 @@
+
+.not-found-image {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+
+}
+
+.not-found-image img {
+    width: 50%;
+    height: 60%;
+}

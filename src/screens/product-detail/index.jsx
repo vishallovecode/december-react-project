@@ -16,6 +16,7 @@ const ProductDetails = (props) => {
     setProductDetails(resJson);
   };
 
+  
   return (
     <div className="product-details">
       <h2>{productDetails.title}</h2>
