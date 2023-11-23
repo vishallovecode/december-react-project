@@ -51,7 +51,7 @@ const Home = () => {
 
   useEffect(()=>{
       console.log('cool',new URLSearchParams(location.search).get('q'))
-     const data = new URLSearchParams(location.search).get('q')
+     const data = new URLSearchParams(location.search).get('q');
       setSearch(data);
       const url = data
         ? SEARCH_PRODUCT_LIST(data)
