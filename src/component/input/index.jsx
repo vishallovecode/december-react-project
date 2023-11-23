@@ -3,10 +3,7 @@ import "./input.css";
 const Input = ({ onChange, value }) => {
 
   const[searchParams, setSearhcParams]= useSearchParams()
-
   const handleInput=(event)=>{
-
-    console.log(searchParams.get('q'))
     setSearhcParams({q:event.target.value})
     onChange(event)
   }

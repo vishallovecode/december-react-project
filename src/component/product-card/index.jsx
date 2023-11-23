@@ -38,14 +38,16 @@ export default ProductCard;
 
 // dynamic routes(done)
 // if any routes does not we want to show differenet ui(done)
-// Switch
-// nested routes
 // useParams(done)
-// location 
+// useSearchParams(done)
+// Switch(depreceated)
+// routes(done)
+// nested routes
+// location (done)
 // history
 // link(done)
 // navLink
-// useLocation
+// useLocation(done)
 // outlet
 // navigate(done)
 // redirect
@@ -59,3 +61,4 @@ export default ProductCard;
 // React authentication 
 // redirection 
 // Private route
+// Portal

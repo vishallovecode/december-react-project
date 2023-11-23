@@ -14,7 +14,7 @@ import Loader from "../../component/loader";
 import EmptyScreen from "../../component/empty-screen";
 import DropDown from "../../component/dropdown";
 import Header from "../../component/header";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
 const Home = () => {
   const [productList, setProductList] = useState({});
@@ -35,6 +35,8 @@ const Home = () => {
   const params = useParams();
   console.log('location', location ,params )
 
+  const[searchParams, setSearhcParams]= useSearchParams()
+
   const getProductsByCategory = async (categoryName) => {
     setLoader(true);
     try {
@@ -50,8 +52,9 @@ const Home = () => {
 
 
   useEffect(()=>{
-      console.log('cool',new URLSearchParams(location.search).get('q'))
-     const data = new URLSearchParams(location.search).get('q');
+    //   console.log('cool',new URLSearchParams(location.search).get('q'))
+    //  const data = new URLSearchParams(location.search).get('q');
+         const data = searchParams.get('q');
       setSearch(data);
       const url = data
         ? SEARCH_PRODUCT_LIST(data)
@@ -60,7 +63,7 @@ const Home = () => {
       // https://dummyjson.com/products/search?q=visha
       // ''
       getProducts(url);
-  } , [location])
+  } , [searchParams])
 
   // calling product by category using useEffect
   // update state
@@ -179,12 +182,6 @@ const Home = () => {
     console.log(updatedCategoryList, "updatedCategoryList", categoryList);
     setCategoryList(updatedCategoryList);
   };
-
-
-  useEffect(()=>{
-console.log(search , 'search')
-  }, [search])
-
   return (
     <>
       <Header cartCount={cartCount} />
@@ -206,7 +203,7 @@ console.log(search , 'search')
             position: "relative",
           }}
         >
-          <Input  value = {search}placeHolder="search" onChange={debounceChange} />
+          <Input  value = {search} placeHolder="search" onChange={debounceChange} />
           <DropDown
             value={selectedCategory}
             handleChange={dropdownChange}
