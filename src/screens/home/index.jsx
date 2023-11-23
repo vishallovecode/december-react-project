@@ -167,7 +167,7 @@ const Home = () => {
     getProducts(url);
   };
 
-  const debounceChange = debounce(handleChange, 500);
+  const debounceChange = debounce(handleChange, 100); // async
   const getCategory = async () => {
     const res = await fetch(GET_CATEGORY_LIST);
     const categoryList = await res.json(); // this is array of string
@@ -179,6 +179,11 @@ const Home = () => {
     console.log(updatedCategoryList, "updatedCategoryList", categoryList);
     setCategoryList(updatedCategoryList);
   };
+
+
+  useEffect(()=>{
+console.log(search , 'search')
+  }, [search])
 
   return (
     <>
