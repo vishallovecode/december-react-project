@@ -14,15 +14,18 @@ import Loader from "../../component/loader";
 import EmptyScreen from "../../component/empty-screen";
 import DropDown from "../../component/dropdown";
 import Header from "../../component/header";
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { redirect, useLocation, useParams, useSearchParams ,Redirect } from "react-router-dom";
 
 const Home = () => {
   const [productList, setProductList] = useState({});
+
+  // const history  =  useHistory()
  
   
   const [search, setSearch] = useState("");
   const [count, setCount] = useState(0);
   const [loader, setLoader] = useState("");
+  const  [isRedirect , setRedirect] = useState(true)
 
   const [cartCount, setCartCount] = useState(0);
 
@@ -156,6 +159,8 @@ const Home = () => {
     getCategory();
   };
 
+
+
   useEffect(callback, []);
 
   const handleChange = (event) => {
@@ -182,6 +187,12 @@ const Home = () => {
     console.log(updatedCategoryList, "updatedCategoryList", categoryList);
     setCategoryList(updatedCategoryList);
   };
+
+
+  // if(isRedirect) {
+  //   console.log(redirect('/login'))
+  //   return Redirect('/login')
+  // }
   return (
     <>
       <Header cartCount={cartCount} />
@@ -274,3 +285,8 @@ export default Home;
 //   name: 'vishal'
 //  }
 //  a.name ='sharma'
+
+
+
+// all the web browser url work on the top of stack => LIFO
+
