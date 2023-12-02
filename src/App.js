@@ -7,9 +7,22 @@ import Home from "./screens/home";
 import ProductDetails from "./screens/product-detail";
 import NotFound from "./component/not-found";
 import WithoutContext from "./withoutcontext";
+import { createContext, useState } from "react";
+import ContextExample from "./context";
+
+
+// Creating App Context
+
+export const AppContext  = createContext(undefined);
+// Provider consumer
 
 function App() {
+
+    const [state , setState]= useState({name: ' Newton School I am coming form parent'})
+
   return (
+    <AppContext.Provider value= {state}>
+
     <div className="App">
        <Routes>
           <Route exact path="/" element={<Home />} />
@@ -18,6 +31,8 @@ function App() {
           <Route path='*' element={<NotFound/>}/>
 
           <Route path= 'withoutcontext' element = {<WithoutContext/>}> </Route>
+
+          <Route path= 'context' element = {<ContextExample/>}> </Route>
 
           {/* Parent route */}
           <Route path ='account' element = {<div>Hello chill maro</div>}> 
@@ -35,6 +50,7 @@ function App() {
          
         </Routes>
     </div>
+    </AppContext.Provider>
   );
 }
 
