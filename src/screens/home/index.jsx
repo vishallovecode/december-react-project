@@ -22,8 +22,6 @@ const Home = () => {
  
   const {dispatch ,state} = useContext(AppContext)
    console.log('state' , state)
-
-
    const [productList , setProductList] = useState(state.productList)
 
   // const history  =  useHistory()

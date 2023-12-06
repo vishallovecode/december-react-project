@@ -13,8 +13,9 @@ export const intitialState = {
 const AppContextProvider = (props)=>{
     //
     const [state , dispatch] = useReducer(reducer , intitialState);
+    const data  = {state , dispatch}
     return (
-        <AppContext.Provider value= {{state , dispatch}}>
+        <AppContext.Provider value= {data}>
             {props.children}
         </AppContext.Provider>
     )
