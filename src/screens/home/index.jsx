@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCard from "../../component/product-card";
 import {
   GET_CATEGORY_LIST,
@@ -15,11 +15,22 @@ import EmptyScreen from "../../component/empty-screen";
 import DropDown from "../../component/dropdown";
 import Header from "../../component/header";
 import { redirect, useLocation, useParams, useSearchParams ,Redirect } from "react-router-dom";
+import { AppContext } from "../../store/AppContext";
+import { FETCH_PRODUCT, PRODUCT_FETCHED_FAILED, PRODUCT_FETCHED_SUCCESS } from "../../store/reducer";
 
 const Home = () => {
-  const [productList, setProductList] = useState({});
+ 
+  const {dispatch ,state} = useContext(AppContext)
+   console.log('state' , state)
+
+
+   const [productList , setProductList] = useState(state.productList)
 
   // const history  =  useHistory()
+
+  useEffect(()=>{
+    setProductList(state.productList)
+  }, [state])
  
   
   const [search, setSearch] = useState("");
@@ -45,7 +56,8 @@ const Home = () => {
     try {
       const res = await fetch(GET_PRODUCT_BY_CATEGORY(categoryName));
       const products = await res.json();
-      setProductList(products);
+      dispatch({type: PRODUCT_FETCHED_SUCCESS , payload: products})
+      // setProductList(products);
     } catch (error) {
       console.error("error::", error);
     } finally {
@@ -95,7 +107,9 @@ const Home = () => {
       }
     });
     updatedProductList.products = products;
-    setProductList(updatedProductList);
+    // setProductList(updatedProductList);
+    dispatch({type: PRODUCT_FETCHED_SUCCESS , payload: updatedProductList})
+
   };
 
   const decrement = (event,productObj) => {
@@ -117,7 +131,8 @@ const Home = () => {
         }
       });
       updatedProductList.products = products;
-      setProductList(updatedProductList);
+      dispatch({type: PRODUCT_FETCHED_SUCCESS , payload: updatedProductList})
+      // setProductList(updatedProductList);
     }
   };
 
@@ -141,14 +156,17 @@ const Home = () => {
   // function declration
   const getProducts = async (url) => {
     setLoader(true);
+    dispatch({type: FETCH_PRODUCT , payload: ''})
     try {
       const URL = url ? url : GET_PRODUCT_LIST;
       const res = await fetch(URL);
       let productResponse = await res.json();
 
-      setProductList(productResponse);
+      // setProductList(productResponse);
+      dispatch({type: PRODUCT_FETCHED_SUCCESS , payload: productResponse})
     } catch (error) {
       console.error("error::", error);
+      dispatch({type: PRODUCT_FETCHED_FAILED , payload: error})
     } finally {
       setLoader(false);
     }

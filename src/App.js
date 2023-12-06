@@ -14,12 +14,12 @@ import AppContextProvider from "./store/AppContext";
 
 // Creating App Context
 
-export const AppContext1  = createContext(undefined); // line =>1
+// export const AppContext1  = createContext(undefined); // line =>1
 
 // Provider consumer
 
 function App() {
-  console.log(AppContext1 , 'Appcontext')
+  // console.log(AppContext1 , 'Appcontext')
     const [state , setState]= useState({name: ' Newton School I am coming form parent'})
     
   return (

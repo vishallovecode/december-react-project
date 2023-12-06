@@ -1,6 +1,7 @@
 export const FETCH_PRODUCT = "FETCH_PRODUCT";
 export const PRODUCT_FETCHED_SUCCESS = "PRODUCT_FETCHED_SUCCESS";
 export const PRODUCT_FETCHED_FAILED = "PRODUCT_FETCHED_FAILED";
+ // 10 actions
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -23,3 +24,4 @@ export const reducer = (state, action) => {
       };
   }
 };
+

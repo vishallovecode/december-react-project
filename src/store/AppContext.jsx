@@ -13,12 +13,6 @@ export const intitialState = {
 const AppContextProvider = (props)=>{
     //
     const [state , dispatch] = useReducer(reducer , intitialState);
-useEffect(()=>{
-    dispatch({type: FETCH_PRODUCT , payload: ''})
-} , [])
-
-   
-
     return (
         <AppContext.Provider value= {{state , dispatch}}>
             {props.children}

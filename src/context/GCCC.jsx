@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { AppContext1 } from "../App";
+// import { AppContext1 } from "../App";
 
 const GCCC = (props)=>{
     // 
-    const {name} = useContext(AppContext1);
+    // const {name} = useContext(AppContext1);
     return (
         <div>
             <h2>
-               {name}
+               {'hello'}
             </h2>
         </div>
     )
