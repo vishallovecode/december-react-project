@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext1 } from "../App";
 
 const GCCC = (props)=>{
     // 
-    const {name} = useContext(AppContext);
-
+    const {name} = useContext(AppContext1);
     return (
         <div>
             <h2>
@@ -13,6 +12,4 @@ const GCCC = (props)=>{
         </div>
     )
 }
-
-
 export default GCCC;

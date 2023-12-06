@@ -9,19 +9,21 @@ import NotFound from "./component/not-found";
 import WithoutContext from "./withoutcontext";
 import { createContext, useState } from "react";
 import ContextExample from "./context";
+import AppContextProvider from "./store/AppContext";
 
 
 // Creating App Context
 
-export const AppContext  = createContext(undefined);
+export const AppContext1  = createContext(undefined); // line =>1
+
 // Provider consumer
 
 function App() {
-
+  console.log(AppContext1 , 'Appcontext')
     const [state , setState]= useState({name: ' Newton School I am coming form parent'})
-
+    
   return (
-    <AppContext.Provider value= {state}>
+<AppContextProvider>
 
     <div className="App">
        <Routes>
@@ -50,7 +52,7 @@ function App() {
          
         </Routes>
     </div>
-    </AppContext.Provider>
+    </AppContextProvider>
   );
 }
 

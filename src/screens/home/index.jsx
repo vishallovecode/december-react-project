@@ -287,6 +287,63 @@ export default Home;
 //  a.name ='sharma'
 
 
+// // all the web browser url work on the top of stack => LIFO
+// {
+//   title: "CopyAttributeDemand",
+//   control: "Boolean",
+//   label: "Attribute Demand",
+//   flag: "copyEnable",
+//   defaultValue: false,
+//   description: "*Copy the attributes demand to the next years."
+// },
+// {
+//   title: "EnableAttributeDemand",
+//   control: "Boolean",
+//   label: "Attribute Demand",
+//   flag: "copyEnable",
+//   defaultValue: false,
+//   description: "*Enable the Attributes Demand."
+// },
 
-// all the web browser url work on the top of stack => LIFO
 
+
+const data = {
+id: 'attributeMethod',
+label: 'Attribute Method',
+headingStart: true,
+children : [
+  { id: "EnableAttributeDemand",control: "Boolean",defaultValue: false,description: "*Enable the Attributes Demand."} ,
+  {title: "CopyAttributeDemand",control: "Boolean",defaultValue: false,description: "*Copy the attributes demand to the next years."
+}, ]
+}
+
+
+
+// const [form , setForm]= useState({
+//   EnableAttributeDemand: false,
+//   CopyAttributeDemand: false
+// })
+
+// const handlChange = (e)=> {
+//  const  updatedFrom  = {...form};
+//  updatedFrom[e.target.name] = e.target.value;
+//  setForm(updatedFrom)
+
+// }
+
+// if(data.children) {
+//   <div style  = {{display: 'flex'}}>
+//       {
+//         data.children.map((object)=>{
+//           <Tooltip value = {object.description}>
+//             <CheckBox object = {object}handleChange = {handlChange}/>
+//             </Tooltip>
+//         })
+//       }
+//   </div>
+// }
+
+
+// const CheckBox = (props)=>{
+//   <input type="checkbox" name ={props.object.id} onChange={handlChange}/>
+// }

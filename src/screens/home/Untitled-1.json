@@ -1,0 +1,21 @@
+{
+id: 'attributeMethod',
+label: 'Attribute Method'
+children : [{ title: "EnableAttributeDemand",
+control: "Boolean",
+label: "Attribute Demand",
+flag: "copyEnable",
+defaultValue: false,
+description: "*Enable the Attributes Demand."} ,{
+  title: "CopyAttributeDemand",
+  control: "Boolean",
+  label: "Attribute Demand",
+  flag: "copyEnable",
+  defaultValue: false,
+  description: "*Copy the attributes demand to the next years."
+}, 
+']
+}
+
+
+Attribute Method 
