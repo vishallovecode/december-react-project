@@ -25,3 +25,6 @@ export const reducer = (state, action) => {
   }
 };
 
+
+// can create multiple reducer and can merge into one
+

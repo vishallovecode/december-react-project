@@ -10,6 +10,7 @@ import WithoutContext from "./withoutcontext";
 import { createContext, useState } from "react";
 import ContextExample from "./context";
 import AppContextProvider from "./store/AppContext";
+import RenderExample from "./component/RenderExample";
 
 
 // Creating App Context
@@ -44,6 +45,7 @@ function App() {
           <Route path = 'account/opt3' element= {<div>Hello opt3</div>}></Route> 
           */}
           <Route path= 'cart' element = {<ContextExample/>}> </Route>
+          <Route path ='rendering' element = {<RenderExample/>}></Route>
         </Routes>
     </div>
     </AppContextProvider>

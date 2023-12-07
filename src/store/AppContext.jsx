@@ -10,13 +10,13 @@ export const intitialState = {
     isLoading:false,
 }
 
-const AppContextProvider = (props)=>{
+const AppContextProvider = ({children})=>{
     //
     const [state , dispatch] = useReducer(reducer , intitialState);
     const data  = {state , dispatch}
     return (
         <AppContext.Provider value= {data}>
-            {props.children}
+            {children}
         </AppContext.Provider>
     )
 }
