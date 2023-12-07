@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 
 const RenderExample = ()=> {
     let b = useRef(30); 
+    const spanRef = useRef(null);
     let a = 60;
     console.log('b=>' ,b )
     const [headerText , setHeaderText] = useState('Hey this is rendering exmaple');
@@ -18,6 +19,10 @@ const RenderExample = ()=> {
         }
     }
 
+    const addText = () => {
+            console.log('spanRef=>' ,spanRef.current)
+            spanRef.current.textContent = 'This Text is added using reference concept'
+    }
     console.log('last  a=>' , a)
     console.log(' last  b=>' , b)
     return  (
@@ -30,6 +35,8 @@ const RenderExample = ()=> {
           <button onClick={()=>handleClick('subheader')}>
             Sub Header Text Change
           </button>
+          <h2 ref= {spanRef} ></h2>
+          <button onClick={addText}>Add Text</button>
         </div>
     )
 }
@@ -63,3 +70,14 @@ export default RenderExample;
 
 // useRef 
 // Persist the data without re-rendering (usePrevious)
+// In Some of the cases you want to interact with the  dom or some element
+
+
+
+// class component => how can you create ref in class component
+
+// const ref  = createRef()// this create ref function will not take any parameter by default the paramater of it is 
+// null 
+
+
+//
