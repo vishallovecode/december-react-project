@@ -21,6 +21,7 @@ const RenderExample = ()=> {
 
     const addText = () => {
             console.log('spanRef=>' ,spanRef.current)
+            // we are manipulating the dom here
             spanRef.current.textContent = 'This Text is added using reference concept'
     }
     console.log('last  a=>' , a)
@@ -80,4 +81,8 @@ export default RenderExample;
 // null 
 
 
-//
+// render , re-render , mounting , what useRef , what is the uses of useRef
+// accessing dom 
+
+
+// In html every element have the attributes called ref <div ref ={}></div>

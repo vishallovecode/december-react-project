@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ProductCard from "../../component/product-card";
 import {
   GET_CATEGORY_LIST,
@@ -20,6 +20,11 @@ import { FETCH_PRODUCT, PRODUCT_FETCHED_FAILED, PRODUCT_FETCHED_SUCCESS } from "
 
 const Home = () => {
  
+
+  // reference for input 
+
+  const inputRef = useRef(null);
+
   const {dispatch ,state} = useContext(AppContext)
    console.log('state' , state)
    const [productList , setProductList] = useState(state.productList)
@@ -140,6 +145,8 @@ const Home = () => {
     }
   }, [selectedCategory]);
 
+
+
   // directly calling on the value change
 
   const dropdownChange = (event) => {
@@ -230,7 +237,8 @@ const Home = () => {
             position: "relative",
           }}
         >
-          <Input  value = {search} placeHolder="search" onChange={debounceChange} />
+          
+          <Input ref  = {inputRef} value = {search} placeHolder="search" onChange={debounceChange} />
           <DropDown
             value={selectedCategory}
             handleChange={dropdownChange}
