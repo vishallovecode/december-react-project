@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const RenderExample = ()=> {
     let b = useRef(30); 
@@ -6,6 +6,9 @@ const RenderExample = ()=> {
     let a = 60;
     console.log('b=>' ,b )
     const [headerText , setHeaderText] = useState('Hey this is rendering exmaple');
+
+
+    const prevHeader = useRef('')
     const  [subHeaderText , setSubHeaderText]= useState('Hey this is sub header text!!!!');
     const handleClick =(type)=>{
         if(type == 'subheader') {
@@ -24,8 +27,11 @@ const RenderExample = ()=> {
             // we are manipulating the dom here
             spanRef.current.textContent = 'This Text is added using reference concept'
     }
-    console.log('last  a=>' , a)
-    console.log(' last  b=>' , b)
+    useEffect(()=>{
+        console.log( 'prevHeader' ,prevHeader.current)
+        prevHeader.current = headerText
+    } , [headerText])
+
     return  (
         <div>
           <h2>{headerText}</h2> 
@@ -72,6 +78,7 @@ export default RenderExample;
 // useRef 
 // Persist the data without re-rendering (usePrevious)
 // In Some of the cases you want to interact with the  dom or some element
+// If you want to track the pervious value of state
 
 
 
@@ -86,3 +93,7 @@ export default RenderExample;
 
 
 // In html every element have the attributes called ref <div ref ={}></div>
+
+// useFetch
+// usePrevious
+// jo tm bolo

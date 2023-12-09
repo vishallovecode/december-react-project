@@ -19,10 +19,8 @@ import { AppContext } from "../../store/AppContext";
 import { FETCH_PRODUCT, PRODUCT_FETCHED_FAILED, PRODUCT_FETCHED_SUCCESS } from "../../store/reducer";
 
 const Home = () => {
- 
 
   // reference for input 
-
   const inputRef = useRef(null);
 
   const {dispatch ,state} = useContext(AppContext)
@@ -52,6 +50,15 @@ const Home = () => {
   const params = useParams();
   console.log('location', location ,params )
 
+
+
+  const focusInputBox = ()=> {
+    inputRef.current.focus();
+  }
+
+  useEffect(()=>{
+    focusInputBox()
+  },[])
   const[searchParams, setSearhcParams]= useSearchParams()
 
   const getProductsByCategory = async (categoryName) => {
@@ -216,6 +223,7 @@ const Home = () => {
   //   console.log(redirect('/login'))
   //   return Redirect('/login')
   // }
+
   return (
     <>
       <Header cartCount={cartCount} />
@@ -239,6 +247,7 @@ const Home = () => {
         >
           
           <Input ref  = {inputRef} value = {search} placeHolder="search" onChange={debounceChange} />
+          
           <DropDown
             value={selectedCategory}
             handleChange={dropdownChange}
@@ -248,7 +257,6 @@ const Home = () => {
             idKey={"categoryName"}
           />
         </div>
-
         <div className="home">
           {!loader &&
           productList?.products &&
