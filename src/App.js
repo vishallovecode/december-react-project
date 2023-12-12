@@ -11,6 +11,7 @@ import { createContext, useState } from "react";
 import ContextExample from "./context";
 import AppContextProvider from "./store/AppContext";
 import RenderExample from "./component/RenderExample";
+import Performance from "./performance/performance";
 
 
 // Creating App Context
@@ -46,6 +47,7 @@ function App() {
           */}
           <Route path= 'cart' element = {<ContextExample/>}> </Route>
           <Route path ='rendering' element = {<RenderExample/>}></Route>
+          <Route path ='performance' element = {<Performance/>}></Route>
         </Routes>
     </div>
     </AppContextProvider>
