@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 const RenderExample = ()=> {
     let b = useRef(30); 
@@ -97,3 +97,41 @@ export default RenderExample;
 // useFetch
 // usePrevious
 // jo tm bolo
+
+
+// ref 
+
+// forwardRef 
+
+// Context api and its limitation
+
+// Fragment 
+
+// You know you cannot share the multiple nodes in return styatment
+//JSX expressions must have one parent element.
+
+// return (
+//    <Fragment>
+//     <div></div>
+//     <div></div>
+//     </Fragment>
+// ) 
+
+
+// return (
+//    <>
+//     <div></div>
+//     <div></div>
+//     </>
+// ) 
+
+// Jsx limitation
+
+   // JSX is  complex , bginner level developer will get confused
+   // SEO is effected(debatable)
+   // lack of documentation
+   // learning is little bit complex
+   // development speed slow
+
+// memoization , useCallback , useMemo , memo
+
