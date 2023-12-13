@@ -37,10 +37,6 @@ const Performance = ()=> {
         return calcFunction(child3);
     } ,[child3])
 
-
-
-    
-
    const func =  useCallback(()=>{
            handlChild1()
            // this code will be run only once after mounting
@@ -72,3 +68,7 @@ export default Performance;
 // as props in child component everytime child component will get new reference , so props will change on every parent render
 // so react memo will not work here 
 // Use memo will return the memoized value or will memozed the function return value
+
+
+
+// 234567897878781*123456789888 => 2.8959e+24

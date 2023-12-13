@@ -12,6 +12,7 @@ import ContextExample from "./context";
 import AppContextProvider from "./store/AppContext";
 import RenderExample from "./component/RenderExample";
 import Performance from "./performance/performance";
+import { createPortal } from "react-dom";
 
 
 // Creating App Context
@@ -50,6 +51,9 @@ function App() {
           <Route path ='performance' element = {<Performance/>}></Route>
         </Routes>
     </div>
+          {
+            createPortal(<h2 id= 'modalRoot'>This is my modal</h2> , document.body)
+          }
     </AppContextProvider>
     </>
   );
