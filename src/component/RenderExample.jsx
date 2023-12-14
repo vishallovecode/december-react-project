@@ -135,3 +135,8 @@ export default RenderExample;
 
 // memoization , useCallback , useMemo , memo
 
+
+
+// Custom Hooks 
+// Authorization and Authentication
+// Lazy Loading

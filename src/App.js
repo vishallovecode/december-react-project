@@ -13,6 +13,8 @@ import AppContextProvider from "./store/AppContext";
 import RenderExample from "./component/RenderExample";
 import Performance from "./performance/performance";
 import { createPortal } from "react-dom";
+import {Fetch , useFetch} from "./custom-hooks/useFetch";
+import CustomHooksExample from "./custom-hooks";
 
 
 // Creating App Context
@@ -23,6 +25,9 @@ import { createPortal } from "react-dom";
 
 function App() {
   // console.log(AppContext1 , 'Appcontext')
+
+  // Improting the custom hooks 
+    Fetch()
     const [state , setState]= useState({name: ' Newton School I am coming form parent'})
     
   return (
@@ -49,6 +54,7 @@ function App() {
           <Route path= 'cart' element = {<ContextExample/>}> </Route>
           <Route path ='rendering' element = {<RenderExample/>}></Route>
           <Route path ='performance' element = {<Performance/>}></Route>
+          <Route path ='custom-hooks' element = {<CustomHooksExample/>}></Route>
         </Routes>
     </div>
           {
@@ -71,3 +77,9 @@ export default App;
 //   case 1: 
 //   return 1
 // }
+
+// Auth and Authorization 
+// Private ROUTE
+// Building Custom hooks
+// Lazy Loading
+// Project Builidng session
