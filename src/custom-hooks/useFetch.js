@@ -1,7 +1,7 @@
 // now this function useFethc will behave like ha hook because the suffix of the function is use if we will remove this suffux or changed something than
 // this will be not a hooks
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // here Fetch is functional component react will consider it as a functional component because if it start with the upper case
 export const Fetch = () => {
@@ -10,6 +10,9 @@ export const Fetch = () => {
   return undefined;
 };
 
+
+
+// this is hook
 export const useFetch = (url) => {
   const [data, setData] = useState({});
   const [loading, isLoading] = useState(false);
@@ -41,3 +44,14 @@ export const useFetch = (url) => {
 // React Hook "useState" is called in function "usFetch" that is neither a React function component
 // nor a custom React Hook function. React component
 // names must start with an uppercase letter. React Hook names must start with the word "use"
+
+
+
+// this is hook
+export const usePrevious= (value)=> {
+    const ref = useRef();
+    useEffect(()=>{
+        ref.current = value;
+    })
+    return ref.current
+};
