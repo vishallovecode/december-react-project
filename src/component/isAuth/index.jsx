@@ -1,8 +1,25 @@
-const IsAuth = (Component)=> {
-    // this component should be able to take care of it whether component is accessible or not
-    return  (
-     <h2>HOC</h2>
-    )
+// Higher order component
+
+import { useState } from "react"
+import { Navigate } from "react-router-dom";
+
+
+
+// Higher order component which takes the component as a params and return the new updated component
+
+const isAuth = (Component)=> {
+ return  (props) => {
+    const [isAutheticated , setIsAuthenticated] = useState(localStorage.getItem('token'));
+    return   isAutheticated  ?  <Component {...props}/> : <Navigate to = '/login'/>
+  }
+    
 }
 
-export default IsAuth;
+
+export default isAuth;
+
+
+
+
+
+

@@ -17,6 +17,7 @@ import {Fetch , useFetch} from "./custom-hooks/useFetch";
 import CustomHooksExample from "./custom-hooks";
 import Cart from "./screens/cart";
 import Login from "./screens/login";
+import Account from "./screens/account";
 
 
 // Creating App Context
@@ -59,6 +60,7 @@ function App() {
           <Route path ='custom-hooks' element = {<CustomHooksExample/>}></Route>
           <Route path= 'cart' element = {<Cart/>}> </Route>
           <Route path= 'login' element = {<Login/>}> </Route>
+          <Route path= 'userinfo' element = {<Account/>}> </Route>
         </Routes>
     </div>
           {
