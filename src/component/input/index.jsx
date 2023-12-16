@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 
 // forward ref will return the updated component so Input2 will be component
 const Input =forwardRef((props, ref)=>{
-  const  { onChange, value  , key } = props
+  const  { onChange, value  , key  , classes} = props
   console.log('child ref' , ref  , 'props=>' , props)
 
   const[searchParams, setSearhcParams]= useSearchParams()
@@ -14,7 +14,7 @@ const Input =forwardRef((props, ref)=>{
     setSearhcParams({q:event.target.value})
     onChange(event)
   }
-  return <input ref = {ref} value={value} className={"input"} onChange={handleInput} />;
+  return <input ref = {ref} value={value} className={"input"} onChange={handleInput}  {...props}/>;
 })
 
 // const Input = (props , ref) => {

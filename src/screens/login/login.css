@@ -1,0 +1,13 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+   border: 3px solid darkgrey;
+    margin: auto;
+    width: 300px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+}

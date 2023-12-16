@@ -15,6 +15,8 @@ import Performance from "./performance/performance";
 import { createPortal } from "react-dom";
 import {Fetch , useFetch} from "./custom-hooks/useFetch";
 import CustomHooksExample from "./custom-hooks";
+import Cart from "./screens/cart";
+import Login from "./screens/login";
 
 
 // Creating App Context
@@ -51,14 +53,16 @@ function App() {
           <Route path = 'account/opt2'  element= {<div>Hello opt2</div>}></Route>
           <Route path = 'account/opt3' element= {<div>Hello opt3</div>}></Route> 
           */}
-          <Route path= 'cart' element = {<ContextExample/>}> </Route>
+          <Route path= 'context123' element = {<ContextExample/>}> </Route>
           <Route path ='rendering' element = {<RenderExample/>}></Route>
           <Route path ='performance' element = {<Performance/>}></Route>
           <Route path ='custom-hooks' element = {<CustomHooksExample/>}></Route>
+          <Route path= 'cart' element = {<Cart/>}> </Route>
+          <Route path= 'login' element = {<Login/>}> </Route>
         </Routes>
     </div>
           {
-            createPortal(<h2 id= 'modalRoot'>This is my modal</h2> , document.body)
+            // createPortal(<h2 id= 'modalRoot'>This is my modal</h2> , document.body)
           }
     </AppContextProvider>
     </>

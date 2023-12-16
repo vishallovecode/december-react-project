@@ -38,7 +38,7 @@ export const useFetch = (url) => {
     getData();
   }, [url]);
 
-  return [data, loading, message];
+  return [data, loading, message , getData];
 };
 
 // React Hook "useState" is called in function "usFetch" that is neither a React function component
