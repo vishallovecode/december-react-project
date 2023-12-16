@@ -1,24 +1,45 @@
 import { useEffect, useState } from "react";
 import Button from "../button";
 import "./header.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = (props) => {
+  const navigate = useNavigate();
   const { cartCount } = props;
+  const [logintext , setLoginText] = useState('Login')
+  const logout = ()=> {
+    if(localStorage.getItem('token')) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('userInfo')
+      setLoginText('Login')
+    }
+   else {
+    navigate('/login')
+   }
+    
+  }
+
+  useEffect(()=>{
+      const token = localStorage.getItem('token');
+      setLoginText(token ? 'Logout': 'Login')
+  } , [])
+
+
   return (
-    <NavLink    activeStyle={{
-      fontWeight: "bold",
-      color: "black"
-    }} 
-  
-    to ='cart'className="header">
+    <div className="header">
+
       <span className="logo">Vayu</span>
+      <span className="logout" onClick={logout}>{logintext}</span>
+      <NavLink    
+      to ='cart'>
       <Button className="button-header">
         <img className="image1" src="/cart.jpeg" />
         <span className="count">{cartCount}</span>
         <span>My Cart</span>
       </Button>
+
     </NavLink>
+    </div>
   );
 };
 

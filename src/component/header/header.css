@@ -14,6 +14,7 @@
   color: white;
   font-weight: bold;
   font-size: 24px;
+  flex-grow: 1;
 }
 
 .button-header {
@@ -40,4 +41,11 @@
   align-items: center;
   left: 30%;
   bottom: 48%;
+}
+
+
+.logout {
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
 }
