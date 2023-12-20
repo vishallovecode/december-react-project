@@ -10,5 +10,11 @@ const Account = ()=> {
     )
 }
 
+export default Account ;
+// export default isAuth( Account )
 
-export default isAuth( Account )
+// authorized
+
+// account   => jwt 
+// product =>  jwt
+// order-history => 

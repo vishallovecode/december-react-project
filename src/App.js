@@ -18,6 +18,7 @@ import CustomHooksExample from "./custom-hooks";
 import Cart from "./screens/cart";
 import Login from "./screens/login";
 import Account from "./screens/account";
+import ProtectedRoute from "./component/protected-route";
 
 
 // Creating App Context
@@ -58,9 +59,10 @@ function App() {
           <Route path ='rendering' element = {<RenderExample/>}></Route>
           <Route path ='performance' element = {<Performance/>}></Route>
           <Route path ='custom-hooks' element = {<CustomHooksExample/>}></Route>
-          <Route path= 'cart' element = {<Cart/>}> </Route>
+          {/* <Route path= 'cart' element = {<Cart/>}> </Route> */}
           <Route path= 'login' element = {<Login/>}> </Route>
-          <Route path= 'userinfo' element = {<Account/>}> </Route>
+          <Route path= 'userinfo' element = {<ProtectedRoute><Account/></ProtectedRoute>}> </Route>\
+          <Route path= 'cart' element = {<ProtectedRoute><Cart/></ProtectedRoute>}> </Route>
         </Routes>
     </div>
           {

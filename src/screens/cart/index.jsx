@@ -21,5 +21,9 @@ const Cart = ()=> {
 
 export default isAuth(Cart);
 
+// fetch 
+//headers[projectId]
+//headers['authorization]: `Bearer ${localStorage.getItem('token)}`
+
 
 
