@@ -19,6 +19,7 @@ import Cart from "./screens/cart";
 import Login from "./screens/login";
 import Account from "./screens/account";
 import ProtectedRoute from "./component/protected-route";
+import Quiz from "./screens/quiz";
 
 
 // Creating App Context
@@ -63,6 +64,7 @@ function App() {
           <Route path= 'login' element = {<Login/>}> </Route>
           <Route path= 'userinfo' element = {<ProtectedRoute><Account/></ProtectedRoute>}> </Route>\
           <Route path= 'cart' element = {<ProtectedRoute><Cart/></ProtectedRoute>}> </Route>
+          <Route path= 'quiz' element = {<Quiz/>}> </Route>
         </Routes>
     </div>
           {
