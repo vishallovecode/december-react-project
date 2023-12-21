@@ -115,16 +115,16 @@ function Quiz() {
     console.log(1)
     
     const start = Date.now()
-    while (Date.now() - start < 50) {
-      window.timestamp = Date.now()
-    }
-    
+    // while (Date.now() - start < 50) {
+    //   window.timestamp = Date.now()
+    // }
+
     useEffect(() => {
       console.log(2)
     }, [state])
   
     Promise.resolve().then(() => console.log(3))
-  
+
     setTimeout(() => console.log(4), 0)
   
     return null
@@ -132,6 +132,8 @@ function Quiz() {
   
 
   export default Quiz;
+
+  // 1 3 4 2
 
 
 
