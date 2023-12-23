@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { Suspense, useContext, useEffect, useRef, useState } from "react";
 import ProductCard from "../../component/product-card";
 import {
   GET_CATEGORY_LIST,
@@ -12,11 +12,14 @@ import Input from "../../component/input";
 import { debounce } from "../../utils";
 import Loader from "../../component/loader";
 import EmptyScreen from "../../component/empty-screen";
-import DropDown from "../../component/dropdown";
+// import DropDown from "../../component/dropdown";
 import Header from "../../component/header";
 import { redirect, useLocation, useParams, useSearchParams ,Redirect } from "react-router-dom";
 import { AppContext } from "../../store/AppContext";
 import { FETCH_PRODUCT, PRODUCT_FETCHED_FAILED, PRODUCT_FETCHED_SUCCESS } from "../../store/reducer";
+
+
+const DropDown = React.lazy(()=>import("../../component/dropdown"))
 
 const Home = () => {
 
@@ -59,7 +62,9 @@ const Home = () => {
   useEffect(()=>{
     focusInputBox()
   },[])
-  const[searchParams, setSearhcParams]= useSearchParams()
+
+
+  const[searchParams, setSearhcParams]= useSearchParams();
 
   const getProductsByCategory = async (categoryName) => {
     setLoader(true);
@@ -247,7 +252,7 @@ const Home = () => {
         >
           
           <Input ref  = {inputRef} value = {search} placeHolder="search" onChange={debounceChange} />
-          
+          <Suspense fallback= {<div>Loading...</div>}> 
           <DropDown
             value={selectedCategory}
             handleChange={dropdownChange}
@@ -256,6 +261,7 @@ const Home = () => {
             labelKey={"categoryName"}
             idKey={"categoryName"}
           />
+          </Suspense>
         </div>
         <div className="home">
           {!loader &&
